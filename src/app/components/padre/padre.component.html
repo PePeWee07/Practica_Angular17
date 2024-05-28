@@ -1,0 +1,37 @@
+<!-- EJEMPLO DE @INPUT -->
+<!-- <div class="card">
+  <div class="card-header bg-dark text-white">
+    Componente PADRE
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Titulo</h5>
+    <app-hijo [data]="dataPadre"></app-hijo>
+    <a href="#" class="btn btn-primary">Button</a>
+  </div>
+</div> -->
+
+<div class="card mt-5">
+  <div class="card-header bg-dark text-white">Componente PADRE</div>
+  <div class="card-body">
+    <h5 class="card-title">Colores</h5>
+    <ul class="list-group ms-3">
+      @for (item of colors; track $index) {
+      <li class="list-group-item">{{ item }}</li>
+      }
+    </ul>
+    <app-hijo
+      (eventSendDate)="addColor($event)"
+      (onNameChange)="onNotify($event)"
+      (myAlias)="onNotifyAlias($event)"
+    ></app-hijo>
+  </div>
+</div>
+
+<div class="randontext container text-center mt-5 p-5">
+  <div class="border">
+    <h3>{{ newTitle }}</h3>
+  </div>
+  <div class="borde">
+    <h4>{{ nameAlias }}</h4>
+  </div>
+</div>

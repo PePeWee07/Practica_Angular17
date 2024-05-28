@@ -1,0 +1,17 @@
+<!-- EJEMPLO DE @INPUT -->
+<!-- <div class="alert alert-primary" role="alert">
+  <strong>HIJO: {{data}}</strong>
+</div> -->
+
+<div class="input-group mt-4">
+  <input #values type="text" class="form-control" />
+  <button
+    class="btn btn-info"
+    type="button"
+    (click)="sendDataToPadre(values.value)"
+  >
+    Send data
+  </button>
+  <button class="btn btn-danger" (click)="notifyParent()">Notify Parent</button>
+</div>
+

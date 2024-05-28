@@ -1,9 +1,14 @@
 import { Routes } from '@angular/router';
-import { UserComponent } from './user/user.component';
+import { PadreComponent } from './components/padre/padre.component';
+import { HijoComponent } from './components/hijo/hijo.component';
 
 export const routes: Routes = [
   {
-    path: 'user',
-    component: UserComponent
+    path: 'padre',
+    component: PadreComponent
+  },
+  {
+    path: 'hijo',
+    component: HijoComponent
   }
 ];
