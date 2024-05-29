@@ -1,0 +1,14 @@
+<p>user-profile works!</p>
+
+<pre>{{userProfile|json}}</pre>
+<img src="{{userProfile.avatar_url}}" alt="">
+
+@if (loadingError) {
+  <p>Failed to load the user profile</p>
+}
+@if (!loadingError && userProfile) {
+  <h2>{{ userProfile.name }}</h2>
+  <p><strong>Email:</strong> {{ userProfile.email }}</p>
+  <p><strong>Url:</strong> {{ userProfile.url }}</p>
+  <p><strong>Repos:</strong> {{ userProfile.public_repos }}</p>
+}
