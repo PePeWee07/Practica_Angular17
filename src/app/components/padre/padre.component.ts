@@ -95,7 +95,7 @@ export class PadreComponent implements OnDestroy{
   private timeChangeLimitedSubscription!: Subscription;
 
   createChild3(){
-    this.container2.clear();
+    this.container3.clear();
 
     this.childComponentRef3 = this.container3.createComponent(HijoComponent);
 
@@ -113,6 +113,13 @@ export class PadreComponent implements OnDestroy{
   arrayNumberLimited: Array<number> = [];
   onTimeChangeLimited(time: number) {
     this.arrayNumberLimited.push(time);
+    console.log('TIME LIMITED: ', time);
+    setTimeout(() => {
+      if (this.timeChangeLimitedSubscription) {
+        this.timeChangeLimitedSubscription.unsubscribe();
+      }
+      console.log('Se ha desuscripto el observable');
+    }, 5000);
   }
 
 

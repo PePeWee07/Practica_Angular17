@@ -47,7 +47,8 @@ export class HijoComponent {
   timeChange = outputFromObservable(this.interval$); //crear un output basado en el observable
 
   // With Observables and alias
-  private intervalAlias$ = interval(2000).pipe(take(5));
+  private intervalAlias$ = interval(1000)
+  // .pipe(take(5));
   timeChangeAlias = outputFromObservable(this.intervalAlias$, {
     alias: 'myOutputAlias',
   }); //crear un output basado en el observable
