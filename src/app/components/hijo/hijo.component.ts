@@ -7,6 +7,8 @@ import {
   ViewChild,
   output,
 } from '@angular/core';
+import { interval, take } from 'rxjs';
+import { outputFromObservable } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-hijo',
@@ -39,4 +41,15 @@ export class HijoComponent {
     this.onNameChange.emit('Message from Child');
     this.nameChangeAlias.emit('Message from Child with alias');
   }
+
+  // With Observables
+  private interval$ = interval(1000);
+  timeChange = outputFromObservable(this.interval$); //crear un output basado en el observable
+
+  // With Observables and alias
+  private intervalAlias$ = interval(2000).pipe(take(5));
+  timeChangeAlias = outputFromObservable(this.intervalAlias$, {
+    alias: 'myOutputAlias',
+  }); //crear un output basado en el observable
+
 }

@@ -28,15 +28,46 @@
 </div>
 
 <div class="randontext container text-center mt-5 p-5">
+  <h6 class="bg-secondary">New Outputs</h6>
   <div class="border">
     <h3>{{ newTitle }}</h3>
   </div>
-  <div class="borde">
+  <div class="border">
     <h4>{{ nameAlias }}</h4>
   </div>
 </div>
 
-<div class="outputProgramaly">
-  <button (click)="createChild()">Create Child</button>
+<div class="outputProgramaly d-flex justify-content-center aling-items-center">
+  <button class="btn btn-warning" (click)="createChild()">Create Child</button>
     <ng-template #childContainer></ng-template>
 </div>
+
+<div class="d-flex justify-content-center aling-items-center">
+
+  <div class="card mt-5">
+    <div class="card-body">
+      <button (click)="createChild2()">Create Child 2</button>
+      <ul>
+        @for (item of arrayNumber; track $index) {
+          <li>{{item}}</li>
+        }
+      </ul>
+      <ng-template #childContainer2></ng-template>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="card mt-5">
+    <div class="card-body">
+      <button (click)="createChild3()">Create Child 3</button>
+      <ul>
+        @for (item of arrayNumberLimited; track $index) {
+          <li>{{item}}</li>
+        }
+      </ul>
+      <ng-template #childContainer3></ng-template>
+    </div>
+
+</div>
+
