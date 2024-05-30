@@ -1,14 +1,22 @@
-<p>user-profile works!</p>
+<div class="container">
+  
+  @if (!loadingError) {
+     <strong><p>Failed to load the user profile</p></strong>
+  }
+  @if (loadingError && userProfile) {
+    <div class="info border mt-3">
+      <div class="text-center">
+        <h2>{{ userProfile.name }}</h2>
+      </div>
+      <img class="rounded mx-auto d-block mt-2" style="width: 100px; height: 100px;" src="{{userProfile.avatar_url}}" alt="profile">
+      <div class="info-user container mt-2 ms-5 ps-3">
+        <p><strong>UserName:</strong> {{ userProfile.login }}</p>
+        <p><strong>Repos:</strong> {{ userProfile.public_repos }}</p> 
+      </div>
+    </div>
+  }
 
-<pre>{{userProfile|json}}</pre>
-<img src="{{userProfile.avatar_url}}" alt="">
+</div>
 
-@if (loadingError) {
-  <p>Failed to load the user profile</p>
-}
-@if (!loadingError && userProfile) {
-  <h2>{{ userProfile.name }}</h2>
-  <p><strong>Email:</strong> {{ userProfile.email }}</p>
-  <p><strong>Url:</strong> {{ userProfile.url }}</p>
-  <p><strong>Repos:</strong> {{ userProfile.public_repos }}</p>
-}
+
+

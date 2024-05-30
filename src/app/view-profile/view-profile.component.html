@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <h1>User Profile Example</h1>
+  
+  <!-- Botón para cargar el perfil de usuario -->
+  <button class="btn btn-primary" (click)="loadProfileBtn = true">Load User Profile</button>
+  
+  <!-- Bloque defer para cargar el componente de perfil de usuario -->
+  @defer (when loadProfileBtn) {
+    <app-user-profile></app-user-profile>
+  } @placeholder {
+    <p>Click the button to load the user profile...</p>
+  } @loading (after 100ms; minimum 1s) {
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  } @error {
+    <p>Failed to load the user profile</p>
+  }
+</div>

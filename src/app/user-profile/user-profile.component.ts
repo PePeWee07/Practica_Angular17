@@ -17,15 +17,20 @@ export class UserProfileComponent implements OnInit{
   constructor(private http: HttpClient) { }
 
   loadUserProfile() {
-    this.http.get('https://api.github.com/users/PePeWee07')
-      .subscribe(
-        (response) => {
-          this.userProfile = response;
-        },
-        (error) => {
-          this.loadingError = true;
-        }
-      );
+    setTimeout(() => {
+      this.http.get('https://api.github.com/users/PePeWee07')
+        .subscribe(
+          (response: any) => {
+            let { name, avatar_url, login, public_repos } = response;
+            this.userProfile = { name, avatar_url, login, public_repos };
+            this.loadingError = true;
+          },
+          (error) => {
+            this.loadingError = false;
+            console.log("Error: ", error);
+          }
+        );
+    }, 3000);
   }
 
   ngOnInit(): void {

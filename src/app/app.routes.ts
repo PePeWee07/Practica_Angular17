@@ -3,6 +3,7 @@ import { PadreComponent } from './components/padre/padre.component';
 import { HijoComponent } from './components/hijo/hijo.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { OutputInputComponent } from './components/output-input/output-input.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
 
 export const routes: Routes = [
   {
@@ -20,5 +21,9 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: UserProfileComponent
+  },
+  {
+    path: 'viewProfile',
+    component: ViewProfileComponent
   }
 ];
