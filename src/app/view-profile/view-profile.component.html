@@ -1,14 +1,52 @@
 <div class="container mt-5">
-  <h1>User Profile Example</h1>
-  
-  <!-- Botón para cargar el perfil de usuario -->
-  <button class="btn btn-primary" (click)="loadProfileBtn = true">Load User Profile</button>
+  <div>
+    <h4>TRIGGER: when</h4>
+    <button class="btn btn-primary" (click)="loadProfileBtn = true">View profile</button>
+  </div>
   
   <!-- Bloque defer para cargar el componente de perfil de usuario -->
   @defer (when loadProfileBtn) {
     <app-user-profile></app-user-profile>
   } @placeholder {
     <p>Click the button to load the user profile...</p>
+  } @loading (after 100ms; minimum 1s) {
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  } @error {
+    <p>Failed to load the user profile</p>
+  }
+</div>
+
+<div class="container mt-5">
+  <div>
+    <h4>TRIGGER: on</h4>
+  </div>
+  
+  <!-- Bloque defer para cargar el componente de perfil de usuario -->
+  @defer (on viewport) {
+    <app-user-profile></app-user-profile>
+  } @placeholder {
+    <p>Click the button to load the user profile...</p>
+  } @loading (after 100ms; minimum 1s) {
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  } @error {
+    <p>Failed to load the user profile</p>
+  }
+</div>
+
+
+<div class="container mt-5">
+  <div>
+    <h4>TRIGGER: interaction</h4>
+    <button class="btn btn-warning" type="button" #profile>View profile</button>
+  </div>
+  @defer (on interaction(profile)) {
+    <app-user-profile/>
+  } @placeholder {
+    <div>Click the button to load the user profile...</div>
   } @loading (after 100ms; minimum 1s) {
     <div class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
