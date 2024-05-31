@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { PadreComponent } from './components/padre/padre.component';
-import { HijoComponent } from './components/hijo/hijo.component';
+import { PadreComponent } from './Output-Input/padre/padre.component';
+import { HijoComponent } from './Output-Input/hijo/hijo.component';
 
 @Component({
   selector: 'app-root',

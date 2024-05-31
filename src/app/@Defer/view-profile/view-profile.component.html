@@ -3,8 +3,8 @@
     <h4>TRIGGER: when</h4>
     <button class="btn btn-primary" (click)="loadProfileBtn = true">View profile</button>
   </div>
-  
-  <!-- Bloque defer para cargar el componente de perfil de usuario -->
+
+  <!-- TRIGGER: when -->
   @defer (when loadProfileBtn) {
     <app-user-profile></app-user-profile>
   } @placeholder {
@@ -22,8 +22,8 @@
   <div>
     <h4>TRIGGER: on</h4>
   </div>
-  
-  <!-- Bloque defer para cargar el componente de perfil de usuario -->
+
+  <!-- TRIGGER: on viewport -->
   @defer (on viewport) {
     <app-user-profile></app-user-profile>
   } @placeholder {
@@ -37,7 +37,7 @@
   }
 </div>
 
-
+<!-- TRIGGER: interaction -->
 <div class="container mt-5">
   <div>
     <h4>TRIGGER: interaction</h4>
