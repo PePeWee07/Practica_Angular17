@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="text-center">
+    <h4>Formularios <small>Validación de Formularios Reactivos </small></h4>
+  </div>
+  <form [formGroup]="profileForm" (ngSubmit)="saveForm()" class="border p-2">
+    <div class="form-group row justify-content-center">
+      <div class="col-4">
+        <label class="label">FirstName</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="firstName"
+          placeholder="FirstName"
+        />
+      </div>
+      <div class="col-4">
+        <label class="label">LastName</label>
+        <input
+          class="form-control"
+          formControlName="lastName"
+          type="text"
+          placeholder="LastName"
+        />
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="label">Email</label>
+      <div class="col-md-8">
+        <input
+          class="form-control"
+          formControlName="email"
+          type="email"
+          placeholder="Email electrónico"
+        />
+      </div>
+    </div>
+
+    <div class="form-group row justify-content-center">
+      <div class="col-4">
+        <label class="label">Password</label>
+        <input
+          class="form-control"
+          type="password"
+          formControlName="password"
+        />
+      </div>
+      <div class="col-4">
+        <label class="label">Confirm Password</label>
+        <input
+          class="form-control"
+          formControlName="confirmPassword"
+          type="password"
+        />
+      </div>
+    </div>
+
+    <div class="form-group row justify-content-center">
+      <div>
+        <h6>Address:</h6>
+      </div>
+      <div class="col-4">
+        <label class="label">Street</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="street"
+        />
+      </div>
+      <div class="col-4">
+        <label class="label">City</label>
+        <input
+          class="form-control"
+          formControlName="city"
+          type="text"
+        />
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="label">&nbsp;</label>
+      <div class="input-group col-md-8">
+        <button type="submit" class="btn btn-outline-primary mr-2">
+          Guardar
+        </button>
+        <button type="submit" class="btn btn-outline-danger">Limpiar</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container mt-4 p-3 text">
+  <div class="text-center">
+    <h3>Monitor</h3>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <pre>Validate: <mark>{{profileForm.valid}}</mark></pre>
+    </div>
+    <div class="col-5">
+      <pre>Status: <mark>{{profileForm.status}}</mark></pre>
+    </div>
+  </div>
+
+  <div class="border container mt-3 p-2">
+    <strong>Values: </strong>
+    <pre>{{ profileForm.value | json }}</pre>
+  </div>
+</div>

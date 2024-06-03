@@ -4,6 +4,7 @@ import { HijoComponent } from './Output-Input/hijo/hijo.component';
 import { UserProfileComponent } from './@Defer/user-profile/user-profile.component';
 import { OutputInputComponent } from './Output-Input/output-input/output-input.component';
 import { ViewProfileComponent } from './@Defer/view-profile/view-profile.component';
+import { ViewFormComponent } from './FormReactive/view-form/view-form.component';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,9 @@ export const routes: Routes = [
   {
     path: 'viewProfile',
     component: ViewProfileComponent
+  },
+  {
+    path: 'form',
+    component: ViewFormComponent
   }
 ];
