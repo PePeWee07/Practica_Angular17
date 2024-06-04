@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container border">
   <div class="text-center">
     <h4>Formularios <small>Validación de Formularios Reactivos </small></h4>
   </div>
@@ -11,7 +11,11 @@
           type="text"
           formControlName="firstName"
           placeholder="FirstName"
+          [class.is-invalid]="firstNameNoValid"
         />
+        @if (firstNameNoValid) {
+          <small class="text-danger">Min 6 characters</small>
+        }
       </div>
       <div class="col-4">
         <label class="label">LastName</label>
@@ -20,7 +24,11 @@
           formControlName="lastName"
           type="text"
           placeholder="LastName"
+          [class.is-invalid]="lastNameNoValid"
         />
+        @if (lastNameNoValid) {
+          <small class="text-danger">Min 6 characters</small>
+        }
       </div>
     </div>
 
@@ -32,7 +40,11 @@
           formControlName="email"
           type="email"
           placeholder="Email electrónico"
+          [class.i-invalid]="emailNoValid"
         />
+        @if (emailNoValid) {
+          <small class="text-danger">Email not valid</small>
+        }
       </div>
     </div>
 
@@ -43,7 +55,11 @@
           class="form-control"
           type="password"
           formControlName="password"
+          [class.is-invalid]="passwordNoValid"
         />
+        @if (passwordNoValid) {
+          <small class="text-danger">Min 6 characters</small>
+        }
       </div>
       <div class="col-4">
         <label class="label">Confirm Password</label>
@@ -51,11 +67,15 @@
           class="form-control"
           formControlName="confirmPassword"
           type="password"
+          [class.is-invalid]="confirmPasswordNoValid"
         />
+        @if (confirmPasswordNoValid) {
+          <small class="text-danger">Passwords not match</small>
+        }
       </div>
     </div>
 
-    <div class="form-group row justify-content-center">
+    <!-- <div class="form-group row justify-content-center">
       <div>
         <h6>Address:</h6>
       </div>
@@ -75,7 +95,7 @@
           type="text"
         />
       </div>
-    </div>
+    </div> -->
 
     <div class="form-group row">
       <label class="label">&nbsp;</label>
@@ -83,28 +103,112 @@
         <button type="submit" class="btn btn-outline-primary mr-2">
           Guardar
         </button>
-        <button type="submit" class="btn btn-outline-danger">Limpiar</button>
+        <button type="button" class="btn btn-outline-danger" (click)="cleanForm()">Limpiar</button>
       </div>
     </div>
   </form>
+  <div class="container mt-4 p-3 text">
+    <div class="text-center">
+      <h3>Monitor</h3>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-5">
+        <pre>Validate: <mark>{{profileForm.valid}}</mark></pre>
+      </div>
+      <div class="col-5">
+        <pre>Status: <mark>{{profileForm.status}}</mark></pre>
+      </div>
+    </div>
+
+    <div class="border container mt-3 p-2">
+      <strong>Values: </strong>
+      <pre>{{ profileForm.value | json }}</pre>
+    </div>
+  </div>
 </div>
 
-<div class="container mt-4 p-3 text">
+
+
+<div class="container border mt-5">
   <div class="text-center">
-    <h3>Monitor</h3>
+    <h3>New Method</h3>
   </div>
-
-  <div class="row justify-content-center">
-    <div class="col-5">
-      <pre>Validate: <mark>{{profileForm.valid}}</mark></pre>
+  <form [formGroup]="registerForm">
+    <div class="">
+      <label for="name">Name</label>
+      <input type="text" formControlName="name" id="name" class="form-control" />
+      @if (nameNoValidRegister.hasError('required')) {
+        <small class="text-danger">Name is required</small>
+      }
     </div>
-    <div class="col-5">
-      <pre>Status: <mark>{{profileForm.status}}</mark></pre>
+    <div class="">
+      <label for="email">Email</label>
+        <input
+          type="email"
+          formControlName="email"
+          id="email"
+          class="form-control"
+          placeholder="Email electrónico"
+          [class.i-invalid]="emailNoValidRegister"
+        />
+        @if (emailNoValidRegister) {
+          <small class="text-danger">Email not valid</small>
+        }
     </div>
-  </div>
+    <div class="">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        formControlName="password"
+        id="password"
+        class="form-control"
+      />
+      @if (passwordNoValidRegister.hasError('customPasswordValidator')) {
+        <small class="text-danger">Mayus + Character special + number + lenght-8</small>
+      }
+      @if (passwordNoValidRegister.hasError('required')) {
+        <small class="text-danger">, Password is required</small>
+      }
+    </div>
+    <div class="">
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        type="password"
+        formControlName="confirmPassword"
+        id="confirmPassword"
+        class="form-control"
+      />
+      @if (confirmPasswordNoValidRegister.hasError('required')) {
+        <small class="text-danger">Password is required</small>
+      }
+      @if (registerForm.hasError('crossConfirmPasswordError')) {
+        <small class="text-danger">, Passwords not match</small>
+      }
+    </div>
+    <div>
+      <button type="submit" class="btn btn-success mt-2 mr-2" (click)="saveRegister()">
+        Guardar
+      </button>
+    </div>
+  </form>
+  <div class="container mt-4 p-3 text">
+    <div class="text-center">
+      <h3>Monitor</h3>
+    </div>
 
-  <div class="border container mt-3 p-2">
-    <strong>Values: </strong>
-    <pre>{{ profileForm.value | json }}</pre>
+    <div class="row justify-content-center">
+      <div class="col-5">
+        <pre>Validate: <mark>{{registerForm.valid}}</mark></pre>
+      </div>
+      <div class="col-5">
+        <pre>Status: <mark>{{registerForm.status}}</mark></pre>
+      </div>
+    </div>
+
+    <div class="border container mt-3 p-2">
+      <strong>Values: </strong>
+      <pre>{{ registerForm.value | json }}</pre>
+    </div>
   </div>
 </div>
